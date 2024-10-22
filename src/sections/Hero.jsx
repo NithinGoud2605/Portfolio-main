@@ -14,7 +14,7 @@ const Hero = () => {
         <p className="hero_tag text-gray_gradient text-2xl  ">FULL STACK DEVELOPER</p>
       </div>
 
-      <div className="col-span-1 xl:row-span-3 h-full relative">  {/* Added relative here */}
+      <div className="col-span-1 my-4 xl:row-span-3 h-full relative">  {/* Added relative here */}
         <div className="card flex flex-col justify-end h-full">
       
           <img src={HeroImage} alt="Hero image" className="object-bottom" />
