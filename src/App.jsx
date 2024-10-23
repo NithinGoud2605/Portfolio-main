@@ -4,9 +4,8 @@ import About from './sections/About.jsx';
 import Footer from './sections/Footer.jsx';
 import Navbar from './sections/Navbar.jsx';
 import Contact from './sections/Contact.jsx';
-import Clients from './sections/Clients.jsx';
 import Skills from './sections/Skills.jsx';
-import WorkExperience from './sections/Experience.jsx';
+import Roadmap from './sections/Roadmap.jsx';
 
 const App = () => {
   return (
@@ -15,8 +14,7 @@ const App = () => {
       <Hero />
       <About />
       <Skills />
-      <Clients />
-      <WorkExperience />
+      <Roadmap />
       <Contact />
       <Footer />
     </main>
