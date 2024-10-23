@@ -70,7 +70,7 @@ const Contact = () => {
         <div className="contact-container">
           <h3 className="head-text">Let's talk</h3>
           <p className="text-lg text-white-600 mt-3">
-          Interested in collaborating or have an opportunity that aligns with my skills? Whether you're looking to build something new, enhance an existing platform, or work on a unique project, I'd love to connect. Feel free to reach out—I'm always excited to learn, grow, and contribute!
+          Feel free to reach out—I'm always excited to learn, grow, and contribute!
           </p>
 
           <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
