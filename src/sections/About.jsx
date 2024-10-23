@@ -3,9 +3,9 @@ const About = () => {
   return (
     
     <section className=" c-space my-20" id="about">
-      <p className="head-text sm:text-3xl text-xl font-medium text-white text-center font-generalsans">About Me</p>
+      <p className="head-text sm:text-3xl text-xl font-medium text-white text-center font-generalsans">ABOUT ME</p>
       
-      <div className="my-5 grid xl:grid-cols-3 xl:grid-rows-2 md:grid-cols-2 grid-cols-1 gap-5 h-full">
+      <div className="my-10 grid xl:grid-cols-3 xl:grid-rows-2 md:grid-cols-2 grid-cols-1 gap-5 h-full">
         <div className="col-span-3 xl:row-span-3">
           <div className="grid-container">
             <img src="assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" />
