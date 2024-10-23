@@ -13,7 +13,7 @@ const Skills = () => {
   };
 
   return (
-    <section className="c-space my-20" ref={skillsRef}>
+    <section className="c-space my-20" id="Skills" ref={skillsRef}>
       <p className="head-text sm:text-3xl text-xl font-medium text-white text-center font-generalsans">SKILLS</p>
 
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">

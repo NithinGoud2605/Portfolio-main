@@ -1,15 +1,12 @@
 import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
-
 import useAlert from '../hooks/useAlert.js';
 import Alert from '../components/Alert.jsx';
 
 const Contact = () => {
   const formRef = useRef();
-
   const { alert, showAlert, hideAlert } = useAlert();
   const [loading, setLoading] = useState(false);
-
   const [form, setForm] = useState({ name: '', email: '', message: '' });
 
   const handleChange = ({ target: { name, value } }) => {
@@ -22,16 +19,16 @@ const Contact = () => {
 
     emailjs
       .send(
-      'service_8g4zwf1', // serviceID
-      'template_51l3e15', // templateID
-      {
-        from_name: form.name,
-        to_name: 'JavaScript Mastery',
-        from_email: form.email,
-        to_email: 'sujata@jsmastery.pro',
-        message: form.message,
-      },
-      'jl4ZMvFboSE5SMFn1' // User ID from your .env file
+        'service_8g4zwf1', 
+        'template_bi7wam7', 
+        {
+          from_name: form.name,
+          to_name: 'Sai Nithin Goud',
+          from_email: form.email,
+          to_email: 'sainithingoudk@gmail.com',
+          message: form.message,
+        },
+        'jl4ZMvFboSE5SMFn1'
       )
       .then(
         () => {
@@ -43,24 +40,19 @@ const Contact = () => {
           });
 
           setTimeout(() => {
-            hideAlert(false);
-            setForm({
-              name: '',
-              email: '',
-              message: '',
-            });
-          }, [3000]);
+            hideAlert();
+            setForm({ name: '', email: '', message: '' });
+          }, 3000); // Change to milliseconds
         },
         (error) => {
           setLoading(false);
           console.error(error);
-
           showAlert({
             show: true,
             text: "I didn't receive your message 😢",
             type: 'danger',
           });
-        },
+        }
       );
   };
 
@@ -69,13 +61,16 @@ const Contact = () => {
       {alert.show && <Alert {...alert} />}
 
       <div className="relative min-h-screen flex items-center justify-center flex-col">
-        <img src="/assets/terminal.png" alt="terminal-bg" className="absolute inset-0 min-h-screen" />
+        <img
+          src="/assets/terminal.png"
+          alt="terminal background"
+          className="absolute inset-0 min-h-screen"
+        />
 
         <div className="contact-container">
           <h3 className="head-text">Let's talk</h3>
           <p className="text-lg text-white-600 mt-3">
-            Whether you’re looking to build a new website, improve your existing platform, or bring a unique project to
-            life, I’m here to help.
+          Interested in collaborating or have an opportunity that aligns with my skills? Whether you're looking to build something new, enhance an existing platform, or work on a unique project, I'd love to connect. Feel free to reach out—I'm always excited to learn, grow, and contribute!
           </p>
 
           <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
@@ -89,6 +84,7 @@ const Contact = () => {
                 required
                 className="field-input"
                 placeholder="ex., John Doe"
+                aria-label="Full Name"
               />
             </label>
 
@@ -102,6 +98,7 @@ const Contact = () => {
                 required
                 className="field-input"
                 placeholder="ex., johndoe@gmail.com"
+                aria-label="Email Address"
               />
             </label>
 
@@ -115,13 +112,13 @@ const Contact = () => {
                 rows={5}
                 className="field-input"
                 placeholder="Share your thoughts or inquiries..."
+                aria-label="Message"
               />
             </label>
 
             <button className="field-btn" type="submit" disabled={loading}>
               {loading ? 'Sending...' : 'Send Message'}
-
-              <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow" />
+              <img src="/assets/arrow-up.png" alt="Send Message" className="field-btn_arrow" />
             </button>
           </form>
         </div>
