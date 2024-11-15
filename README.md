@@ -11,9 +11,3 @@ Welcome to my portfolio website! Check it out here: [sainithingoud.vercel.app](h
 - Hosted on Vercel
   
 ---
-
-## Usage
-
-Visit **[sainithingoud.vercel.app](https://sainithingoud.vercel.app/)** to explore.
-
----
