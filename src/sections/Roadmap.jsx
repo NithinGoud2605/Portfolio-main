@@ -5,9 +5,10 @@ const WorkExperience = () => {
   const [animationName, setAnimationName] = useState('idle');
 
   return (
-    <section className="c-space my-20" id="work">
-      <div className="w-full text-white-600">
-        <p className="head-text sm:text-3xl text-xl font-medium text-white text-center font-generalsans">ROAD MAP</p>
+    <section className="w-full flex flex-col justify-center" id="work">
+      <div className="c-space">
+        <div className="w-full text-white-600">
+        <p className="head-text sm:text-3xl text-xl font-medium text-space_gradient text-center font-generalsans">ROAD MAP</p>
 
         <div className="work-container">
           <div className="work-content">
@@ -32,6 +33,7 @@ const WorkExperience = () => {
                 </div>
               ))}
             </div>
+          </div>
           </div>
         </div>
       </div>

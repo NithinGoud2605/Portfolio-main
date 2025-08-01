@@ -13,13 +13,14 @@ const Skills = () => {
   };
 
   return (
-    <section className="c-space my-20" id="Skills" ref={skillsRef}>
-      <p className="head-text sm:text-3xl text-xl font-medium text-white text-center font-generalsans">SKILLS</p>
+    <section className="w-full flex flex-col justify-center" id="Skills" ref={skillsRef}>
+      <div className="c-space">
+        <p className="head-text sm:text-3xl text-xl font-medium text-space_gradient text-center font-generalsans">SKILLS</p>
 
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
         {/* Front-End Technologies Container */}
-        <div className="flex flex-col relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200">
-          <p className="font-bold mb-10 text-white text-center">Front-End Technologies</p>
+        <div className="flex flex-col relative sm:p-10 py-10 px-5 shadow-2xl shadow-cosmic-purple/20 bg-space_gradient backdrop-blur-sm rounded-lg border border-cosmic-purple/30">
+          <p className="font-bold mb-10 text-white-800 text-center">Front-End Technologies</p>
           <div className="grid grid-cols-3 gap-6"> {/* Adjust gap as needed */}
             {['html', 'css', 'javascript', 'bootstrap', 'react', 'tailwind-css','Unity','Blender'].map((tech, index) => (
               <div className="text-center" key={tech}>
@@ -39,8 +40,8 @@ const Skills = () => {
         </div>
 
         {/* Back-End Technologies Container */}
-        <div className="flex flex-col relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200">
-          <p className="font-bold mb-10 text-white text-center">Back-End & Tools</p>
+        <div className="flex flex-col relative sm:p-10 py-10 px-5 shadow-2xl shadow-cosmic-purple/20 bg-space_gradient backdrop-blur-sm rounded-lg border border-cosmic-purple/30">
+          <p className="font-bold mb-10 text-white-800 text-center">Back-End & Tools</p>
           <div className="grid grid-cols-3 gap-10">
             {['python', 'c++', 'nodejs', 'django', 'Wagtail', 'sqlite', 'postgresql', 'docker', 'Github'].map((tech, index) => (
               <div className="text-center" key={tech}>
@@ -57,6 +58,7 @@ const Skills = () => {
               </div>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </section>

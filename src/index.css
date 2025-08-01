@@ -5,12 +5,50 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  scroll-behavior: smooth;
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* WebKit */
 }
 
 body {
-  background: #010103;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar for all elements */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.section-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 2rem 0;
+}
+
+.section-container:first-child {
+  min-height: 100vh;
+  padding: 0;
+}
+
+.section-container:last-child {
+  padding-bottom: 2rem;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0a15 0%, #1a1a2e 30%, #16213e 70%, #0f0f23 100%);
+  background-attachment: fixed;
 }
 
 @layer base {
@@ -47,11 +85,28 @@ body {
   }
 
   .nav-sidebar {
-    @apply absolute left-0 right-0 bg-black-200 backdrop-blur-sm transition-all duration-300 ease-in-out overflow-hidden z-20 mx-auto sm:hidden block;
+    @apply absolute left-0 right-0 backdrop-blur-lg transition-all duration-300 ease-in-out overflow-hidden z-20 mx-auto sm:hidden block;
   }
 
   .text-gray_gradient {
     @apply bg-gradient-to-r from-[#BEC1CF] from-60% via-[#D5D8EA] via-60% to-[#D5D8EA] to-100% bg-clip-text text-transparent;
+  }
+
+  .text-space_gradient {
+    background: linear-gradient(to right, #40C4FF, #673AB7, #4A148C);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-space_gradient {
+    background: linear-gradient(135deg, rgba(15, 20, 25, 0.8) 0%, rgba(27, 31, 58, 0.6) 50%, rgba(42, 45, 71, 0.4) 100%);
+  }
+
+  .bg-cosmic_glow {
+    background: linear-gradient(to right, rgba(74, 20, 140, 0.2), rgba(103, 58, 183, 0.2), rgba(64, 196, 255, 0.2));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(74, 20, 140, 0.3);
   }
 
   .btn {
@@ -146,7 +201,7 @@ body {
   }
 
   .contact-container {
-    @apply max-w-xl relative z-10 sm:px-10 px-5 mt-12;
+    @apply w-full max-w-xl relative z-10 sm:px-10 px-5 mt-12 mx-auto;
   }
 
   .field-label {

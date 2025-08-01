@@ -57,10 +57,10 @@ const Contact = () => {
   };
 
   return (
-    <section className="c-space my-20" id="contact">
+    <section className="w-full flex flex-col justify-center" id="contact">
       {alert.show && <Alert {...alert} />}
 
-      <div className="relative min-h-screen flex items-center justify-center flex-col">
+      <div className="c-space relative flex items-center justify-center flex-col">
         <img
           src="/assets/terminal.png"
           alt="terminal background"

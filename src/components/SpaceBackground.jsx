@@ -1,0 +1,209 @@
+import { useRef, useMemo } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Points, PointMaterial } from '@react-three/drei';
+import * as random from 'maath/random/dist/maath-random.esm';
+
+// Main star field component
+function Stars({ count = 3000 }) {
+  const ref = useRef();
+  const [sphere] = useMemo(() => [random.inSphere(new Float32Array(count), { radius: 50 })], [count]);
+
+  useFrame((state, delta) => {
+    ref.current.rotation.x -= delta / 10;
+    ref.current.rotation.y -= delta / 15;
+  });
+
+  return (
+    <group rotation={[0, 0, Math.PI / 4]}>
+      <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
+        <PointMaterial
+          transparent
+          color="#ffffff"
+          size={0.005}
+          sizeAttenuation={true}
+          depthWrite={false}
+        />
+      </Points>
+    </group>
+  );
+}
+
+// Distant stars with different colors
+function DistantStars({ count = 1500 }) {
+  const ref = useRef();
+  const [sphere] = useMemo(() => [random.inSphere(new Float32Array(count), { radius: 80 })], [count]);
+
+  useFrame((state, delta) => {
+    ref.current.rotation.x += delta / 20;
+    ref.current.rotation.y -= delta / 25;
+  });
+
+  return (
+    <group rotation={[0, 0, Math.PI / 6]}>
+      <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
+        <PointMaterial
+          transparent
+          color="#B3E5FC"
+          size={0.003}
+          sizeAttenuation={true}
+          depthWrite={false}
+        />
+      </Points>
+    </group>
+  );
+}
+
+// Blue giant stars
+function BlueGiants({ count = 300 }) {
+  const ref = useRef();
+  const [sphere] = useMemo(() => [random.inSphere(new Float32Array(count), { radius: 60 })], [count]);
+
+  useFrame((state, delta) => {
+    ref.current.rotation.x += delta / 30;
+    ref.current.rotation.z -= delta / 40;
+  });
+
+  return (
+    <group>
+      <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
+        <PointMaterial
+          transparent
+          color="#40C4FF"
+          size={0.008}
+          sizeAttenuation={true}
+          depthWrite={false}
+        />
+      </Points>
+    </group>
+  );
+}
+
+// Cosmic dust particles
+function CosmicDust({ count = 2000 }) {
+  const ref = useRef();
+  const [sphere] = useMemo(() => [random.inSphere(new Float32Array(count), { radius: 100 })], [count]);
+
+  useFrame((state, delta) => {
+    ref.current.rotation.y += delta / 50;
+    ref.current.position.x = Math.sin(state.clock.elapsedTime / 20) * 0.2;
+  });
+
+  return (
+    <group>
+      <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
+        <PointMaterial
+          transparent
+          color="#E1BEE7"
+          size={0.001}
+          sizeAttenuation={true}
+          depthWrite={false}
+          opacity={0.3}
+        />
+      </Points>
+    </group>
+  );
+}
+
+// Nebula cloud effect
+function NebulaCloud() {
+  const ref = useRef();
+
+  useFrame((state, delta) => {
+    ref.current.rotation.z += delta / 60;
+    ref.current.position.x = Math.sin(state.clock.elapsedTime / 15) * 0.3;
+    ref.current.position.y = Math.cos(state.clock.elapsedTime / 20) * 0.2;
+  });
+
+  return (
+    <mesh ref={ref} position={[0, 0, -20]}>
+      <planeGeometry args={[40, 40, 1, 1]} />
+      <meshBasicMaterial
+        transparent
+        opacity={0.05}
+        color="#4A148C"
+        side={2}
+      />
+    </mesh>
+  );
+}
+
+// Purple nebula layer
+function PurpleNebula() {
+  const ref = useRef();
+
+  useFrame((state, delta) => {
+    ref.current.rotation.z -= delta / 80;
+    ref.current.position.x = Math.cos(state.clock.elapsedTime / 25) * 0.4;
+    ref.current.position.y = Math.sin(state.clock.elapsedTime / 30) * 0.3;
+  });
+
+  return (
+    <mesh ref={ref} position={[5, -3, -30]}>
+      <planeGeometry args={[60, 30, 1, 1]} />
+      <meshBasicMaterial
+        transparent
+        opacity={0.03}
+        color="#7C4DFF"
+        side={2}
+      />
+    </mesh>
+  );
+}
+
+// Twinkling bright stars
+function TwinklingStars({ count = 50 }) {
+  const ref = useRef();
+  const [sphere] = useMemo(() => [random.inSphere(new Float32Array(count), { radius: 70 })], [count]);
+
+  useFrame((state) => {
+    ref.current.material.size = 0.01 + Math.sin(state.clock.elapsedTime * 2) * 0.005;
+    ref.current.rotation.x += 0.001;
+  });
+
+  return (
+    <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
+      <PointMaterial
+        transparent
+        color="#FFD700"
+        size={0.01}
+        sizeAttenuation={true}
+        depthWrite={false}
+      />
+    </Points>
+  );
+}
+
+const SpaceBackground = () => {
+  return (
+    <div className="fixed inset-0 -z-10">
+      <Canvas
+        camera={{ position: [0, 0, 1], fov: 75 }}
+        gl={{ 
+          antialias: false, 
+          alpha: true,
+          powerPreference: "high-performance",
+          stencil: false,
+          depth: false
+        }}
+        dpr={[1, Math.min(window.devicePixelRatio, 2)]}
+        performance={{ min: 0.5 }}
+        frameloop="always"
+      >
+        {/* Main star layers */}
+        <Stars count={3000} />
+        <DistantStars count={1500} />
+        <BlueGiants count={300} />
+        
+        {/* Atmospheric effects */}
+        <CosmicDust count={2000} />
+        <TwinklingStars count={50} />
+        
+        {/* Nebula layers */}
+        <NebulaCloud />
+        <PurpleNebula />
+      </Canvas>
+    </div>
+  );
+};
+
+export default SpaceBackground;

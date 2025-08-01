@@ -2,8 +2,9 @@
 const About = () => {
   return (
     
-    <section className=" c-space my-20" id="about">
-      <p className="head-text sm:text-3xl text-xl font-medium text-white text-center font-generalsans">ABOUT ME</p>
+    <section className="w-full flex flex-col justify-center" id="about">
+      <div className="c-space">
+        <p className="head-text sm:text-3xl text-xl font-medium text-space_gradient text-center font-generalsans">ABOUT ME</p>
       
       <div className="my-10 grid xl:grid-cols-3 xl:grid-rows-2 md:grid-cols-2 grid-cols-1 gap-5 h-full">
         <div className="col-span-3 xl:row-span-3">
@@ -19,6 +20,7 @@ const About = () => {
 
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
