@@ -14,7 +14,7 @@ const WorkExperience = () => {
           <div className="work-content">
             <div className="sm:py-10 py-5 sm:px-5 px-2.5">
               {workExperiences.map((item, index) => (
-                <div className="work-content_container group">
+                <div key={index} className="work-content_container group">
                   <div className="flex flex-col h-full justify-start items-center py-2">
                     <div className="work-content_logo">
                       <img className="w-full h-full" src={item.icon} alt="" />

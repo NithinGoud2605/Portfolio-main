@@ -6,7 +6,16 @@ import * as random from 'maath/random/dist/maath-random.esm';
 // Main star field component
 function Stars({ count = 3000 }) {
   const ref = useRef();
-  const [sphere] = useMemo(() => [random.inSphere(new Float32Array(count), { radius: 50 })], [count]);
+  const [sphere] = useMemo(() => {
+    const positions = random.inSphere(new Float32Array(count), { radius: 50 });
+    // Ensure no NaN values
+    for (let i = 0; i < positions.length; i++) {
+      if (isNaN(positions[i])) {
+        positions[i] = (Math.random() - 0.5) * 100; // Replace NaN with random value
+      }
+    }
+    return [positions];
+  }, [count]);
 
   useFrame((state, delta) => {
     ref.current.rotation.x -= delta / 10;
@@ -31,7 +40,16 @@ function Stars({ count = 3000 }) {
 // Distant stars with different colors
 function DistantStars({ count = 1500 }) {
   const ref = useRef();
-  const [sphere] = useMemo(() => [random.inSphere(new Float32Array(count), { radius: 80 })], [count]);
+  const [sphere] = useMemo(() => {
+    const positions = random.inSphere(new Float32Array(count), { radius: 80 });
+    // Ensure no NaN values
+    for (let i = 0; i < positions.length; i++) {
+      if (isNaN(positions[i])) {
+        positions[i] = (Math.random() - 0.5) * 160; // Replace NaN with random value
+      }
+    }
+    return [positions];
+  }, [count]);
 
   useFrame((state, delta) => {
     ref.current.rotation.x += delta / 20;
@@ -56,7 +74,16 @@ function DistantStars({ count = 1500 }) {
 // Blue giant stars
 function BlueGiants({ count = 300 }) {
   const ref = useRef();
-  const [sphere] = useMemo(() => [random.inSphere(new Float32Array(count), { radius: 60 })], [count]);
+  const [sphere] = useMemo(() => {
+    const positions = random.inSphere(new Float32Array(count), { radius: 60 });
+    // Ensure no NaN values
+    for (let i = 0; i < positions.length; i++) {
+      if (isNaN(positions[i])) {
+        positions[i] = (Math.random() - 0.5) * 120; // Replace NaN with random value
+      }
+    }
+    return [positions];
+  }, [count]);
 
   useFrame((state, delta) => {
     ref.current.rotation.x += delta / 30;
@@ -81,7 +108,16 @@ function BlueGiants({ count = 300 }) {
 // Cosmic dust particles
 function CosmicDust({ count = 2000 }) {
   const ref = useRef();
-  const [sphere] = useMemo(() => [random.inSphere(new Float32Array(count), { radius: 100 })], [count]);
+  const [sphere] = useMemo(() => {
+    const positions = random.inSphere(new Float32Array(count), { radius: 100 });
+    // Ensure no NaN values
+    for (let i = 0; i < positions.length; i++) {
+      if (isNaN(positions[i])) {
+        positions[i] = (Math.random() - 0.5) * 200; // Replace NaN with random value
+      }
+    }
+    return [positions];
+  }, [count]);
 
   useFrame((state, delta) => {
     ref.current.rotation.y += delta / 50;
@@ -153,11 +189,24 @@ function PurpleNebula() {
 // Twinkling bright stars
 function TwinklingStars({ count = 50 }) {
   const ref = useRef();
-  const [sphere] = useMemo(() => [random.inSphere(new Float32Array(count), { radius: 70 })], [count]);
+  const [sphere] = useMemo(() => {
+    const positions = random.inSphere(new Float32Array(count), { radius: 70 });
+    // Ensure no NaN values
+    for (let i = 0; i < positions.length; i++) {
+      if (isNaN(positions[i])) {
+        positions[i] = (Math.random() - 0.5) * 140; // Replace NaN with random value
+      }
+    }
+    return [positions];
+  }, [count]);
 
   useFrame((state) => {
-    ref.current.material.size = 0.01 + Math.sin(state.clock.elapsedTime * 2) * 0.005;
-    ref.current.rotation.x += 0.001;
+    if (ref.current) {
+      if (ref.current.material) {
+        ref.current.material.size = 0.01 + Math.sin(state.clock.elapsedTime * 2) * 0.005;
+      }
+      ref.current.rotation.x += 0.001;
+    }
   });
 
   return (

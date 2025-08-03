@@ -7,6 +7,7 @@ import Skills from './sections/Skills.jsx';
 import Projects from './sections/Projects.jsx';
 import Roadmap from './sections/Roadmap.jsx';
 import SpaceBackground from './components/SpaceBackground.jsx';
+import LogoField from './components/LogoField.jsx';
 import ScrollFadeSection from './components/ScrollFadeSection.jsx';
 
 const App = () => {
@@ -14,6 +15,8 @@ const App = () => {
     <>
       {/* Space Background */}
       <SpaceBackground />
+      {/* Floating Logos */}
+      <LogoField />
       
       {/* Navigation */}
       <Navbar />
