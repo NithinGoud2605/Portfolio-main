@@ -1,14 +1,33 @@
 import { useState } from 'react';
 
 import { navLinks } from '../constants/index.js';
-import logo from '../../public/assets/logo.png';
-import Resume from '../../public/assets/Resume.pdf';
+import PDFViewer from '../components/PDFViewer.jsx';
+
+// Smooth scrolling function
+const scrollToSection = (sectionId) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+};
 
 const NavItems = ({ onClick = () => {} }) => (
   <ul className="nav-ul">
     {navLinks.map((item) => (
       <li key={item.id} className="nav-li">
-        <a href={item.href} className="nav-li_a" onClick={onClick}>
+        <a 
+          href={item.href} 
+          className="nav-li_a" 
+          onClick={(e) => {
+            e.preventDefault();
+            const sectionId = item.href.substring(1); // Remove the # from href
+            scrollToSection(sectionId);
+            onClick();
+          }}
+        >
           {item.name}
         </a>
       </li>
@@ -18,16 +37,19 @@ const NavItems = ({ onClick = () => {} }) => (
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPDFOpen, setIsPDFOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+  const openPDF = () => setIsPDFOpen(true);
+  const closePDF = () => setIsPDFOpen(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/90">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center py-5 mx-auto c-space">
           <a href="/">
-            <img src={logo} alt="logo image" className="w-24 h-auto" />
+            <img src="/assets/logo.png" alt="logo image" className="w-24 h-auto" />
           </a>
 
           <button
@@ -41,20 +63,36 @@ const Navbar = () => {
             <NavItems />
 
           </nav>
-          <a
-              href={Resume}
-              className="text-black bg-white ml-4 shadow-lg p-3 rounded transition-transform duration-200 hover:scale-105"
-              download>
+          <button
+              onClick={openPDF}
+              className="text-black bg-white ml-4 shadow-lg p-3 rounded transition-transform duration-200 hover:scale-105 hidden sm:block">
               Resume
-            </a>
+            </button>
         </div>
       </div>
 
       <div className={`nav-sidebar ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
         <nav className="p-5">
           <NavItems onClick={closeMenu} />
+          <div className="mt-4 pt-4 border-t border-gray-600">
+            <button
+              onClick={() => {
+                openPDF();
+                closeMenu();
+              }}
+              className="w-full text-white bg-white/10 p-3 rounded hover:bg-white/20 transition-colors duration-200">
+              Resume
+            </button>
+          </div>
         </nav>
       </div>
+      
+      {/* PDF Viewer Modal */}
+      <PDFViewer 
+        isOpen={isPDFOpen} 
+        onClose={closePDF} 
+        pdfUrl="/assets/Resume.pdf" 
+      />
     </header>
   );
 };

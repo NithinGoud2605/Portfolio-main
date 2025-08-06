@@ -1,5 +1,5 @@
 import Button from '../components/Button.jsx';
-import HeroImage from '../../public/assets/final-ai-brush-removebg-4yhtxlg.png';
+import SocialMedia from '../components/SocialMedia.jsx';
 
 const Hero = () => {
   return (
@@ -12,11 +12,16 @@ const Hero = () => {
           SAI NITHIN GOUD K
         </p>
         <p className="hero_tag text-gray_gradient text-2xl">SOFTWARE DEVELOPER</p>
+        
+        {/* Social Media Links */}
+        <div className="flex justify-center mt-6">
+          <SocialMedia />
+        </div>
       </div>
 
       <div className="col-span-1 my-4 xl:row-span-3 h-full relative">  {/* Added relative here */}
         <div className="card flex flex-col justify-end h-full">
-          <img src={HeroImage} alt="Hero image" className="object-bottom" />
+          <img src="/assets/final-ai-brush-removebg-4yhtxlg.png" alt="Hero image" className="object-bottom" />
         </div>
       </div>
 
@@ -24,9 +29,19 @@ const Hero = () => {
 
       {/* Button only visible on screens smaller than laptop resolution */}
       <div className="absolute bottom-20 left-0 right-0 w-full z-10 c-space flex justify-center"> 
-        <a href="#about" className="w-fit block lg:hidden"> {/* Hide on large screens */}
+        <button 
+          onClick={() => {
+            const element = document.getElementById('about');
+            if (element) {
+              element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            }
+          }}
+          className="w-fit block lg:hidden"> {/* Hide on large screens */}
           <Button name="Know about me" />
-        </a>
+        </button>
       </div>
     </section>
   );

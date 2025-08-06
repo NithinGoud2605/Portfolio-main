@@ -57,3 +57,24 @@ export const workExperiences = [
     icon: '/assets/BSPIGT.png',
   },
 ];
+
+export const socialLinks = [
+  {
+    id: 1,
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/sainithingoudk/',
+    icon: '/assets/social/linkedin.svg',
+  },
+  {
+    id: 2,
+    name: 'GitHub',
+    url: 'https://github.com/NithinGoud2605',
+    icon: '/assets/social/github.svg',
+  },
+  {
+    id: 3,
+    name: 'itch.io',
+    url: 'https://nithingoud.itch.io/',
+    icon: '/assets/social/itchio.svg',
+  },
+];
