@@ -15,14 +15,13 @@ const Projects = () => {
       title: "E-commerce & Real-Time Analytics Platform",
       subtitle: "Django · Spring Boot · Kafka · GraphQL · AWS EKS · Stripe",
       category: "Enterprise Platform",
-      description: "End-to-end marketplace processing 5k orders/day with real-time analytics. Kafka streams ingest millions of events/second at 99.99% uptime with live recommendations and sub-100ms API response times.",
+      description: "Microservices marketplace with JWT/RBAC behind an API gateway, REST + GraphQL, and real-time analytics.",
       features: [
-        "JWT Authentication → Cart → Stripe Payment Flow",
-        "Kafka Streams: Millions ev/s, 99.99% Uptime",
-        "Partition-Affinity & Back-Pressure (+25% Throughput)",
-        "Live Recommendations (Stock Mismatch -80%, Add-to-Cart +12%)",
-        "REST & GraphQL APIs (p99 < 100ms)",
-        "Jenkins → ECR → EKS Deployment (< 5 min)"
+        "Developed microservices marketplace (auth, catalog, cart, orders, payments) secured with JWT and RBAC behind an API gateway, supporting REST + GraphQL and scaling to 5K+ concurrent users.",
+        "Engineered Kafka topics for orders, payments, and inventory with back-pressure and partition-affinity, delivering 40% higher throughput under peak load.",
+        "Built a graph-based recommendation system with caching, cutting stock mismatches and boosting conversions.",
+        "Established CI/CD with Jenkins and Terraform for automated ECR builds and EKS rolling deployments.",
+        "Optimized Stripe webhook handlers with retry + DLQ ensuring exactly-once order state transitions; eliminated duplicate charges."
       ],
       technologies: ["Django", "Spring Boot", "Kafka", "GraphQL", "AWS EKS", "Stripe", "Prometheus", "Jenkins"],
       architecture: [
@@ -38,7 +37,7 @@ const Projects = () => {
         { value: "+25%", label: "Throughput" }
       ],
       demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/NithinGoud2605/Ecommerce-Site-with-django",
       imageUrl: "/assets/projects/ecommerce-platform.jpg",
       icon: (
         <svg className="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,14 +56,13 @@ const Projects = () => {
       title: "MoneyScale",
       subtitle: "Scalable Personal Finance Tracker (Node.js, AWS)",
       category: "FinTech Application",
-      description: "Cloud-native finance platform with AWS Lambda, EC2, and S3 for real-time expense monitoring and predictions. Features OAuth 2.0 security and ML-powered expense classification.",
+      description: "Smart finance app with AI budgeting and time-series forecasting on a secure, scalable cloud stack.",
       features: [
-        "AWS Lambda, EC2 & S3 Cloud Architecture",
-        "Real-time Expense Monitoring & Predictions",
-        "OAuth 2.0 Secured User Access",
-        "RESTful APIs with PostgreSQL Indexing",
-        "ML Expense Classification Modules",
-        "Time-Series Trend Forecasting"
+        "Designed AI-powered budgeting with time-series forecasting algorithms, improving expense trend accuracy.",
+        "OAuth2 authentication, encrypted secrets, and row-level scoping.",
+        "PostgreSQL with indexed queries and materialized views.",
+        "Serverless + EC2 hybrid: Lambdas for ingestion/ETL, EC2 for API; S3 for receipts/exports.",
+        "Background jobs for re-categorization."
       ],
       technologies: ["Node.js", "AWS Lambda", "AWS EC2", "AWS S3", "PostgreSQL", "OAuth 2.0", "ML/AI"],
       architecture: [
@@ -80,7 +78,7 @@ const Projects = () => {
         { value: "Scalable", label: "Architecture" }
       ],
       demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/NithinGoud2605/MoneyScale",
       imageUrl: "/assets/projects/moneyscale.jpg",
       icon: (
         <svg className="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +98,7 @@ const Projects = () => {
       title: "Dehliver It!",
       subtitle: "Real-Time Hazard-Based Simulation (Unity, C#)",
       category: "Game Development",
-      description: "Real-time hazard-avoidance delivery simulation with custom game loop, asynchronous timing logic, and optimized resource management for mobile deployment.",
+      description: "Real-time hazard-avoidance delivery simulation with custom game loop, async timing, and mobile optimizations.",
       features: [
         "Real-time Hazard-Avoidance Simulation",
         "Unity with C# Scripting",
@@ -123,7 +121,7 @@ const Projects = () => {
         { value: "Modular", label: "Design" }
       ],
       demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/NithinGoud2605/Dehliverit",
       imageUrl: "/assets/projects/dehliver-it.jpg",
       icon: (
         <svg className="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -144,14 +142,13 @@ const Projects = () => {
       title: "DDoS Detection Using CIC Flow Data",
       subtitle: "Python · Scikit-learn · XGBoost · CIC-IDS2017 · Flask",
       category: "Cybersecurity ML",
-      description: "Advanced machine learning system for real-time DDoS attack detection using CIC-IDS2017 network flow data. Achieved 98%+ F1 score with ensemble models and sub-200ms prediction response time.",
+      description: "ML system for DDoS detection using CIC-IDS2017 network flows with high-accuracy ensemble models.",
       features: [
-        "CIC-IDS2017 Network Flow Processing (80+ features/packet)",
-        "Ensemble Models: Random Forest + XGBoost (98%+ F1 Score)",
-        "SMOTE Balancing for Class Imbalance Handling",
-        "Real-time Flask REST API (<200ms Response)",
-        "PCA/t-SNE Anomaly Visualization with Seaborn",
-        "UDP Floods & Slowloris Attack Detection"
+        "Designed pipeline: parsing & cleaning flow features (80+), scaling, feature selection, and SMOTE for imbalance.",
+        "Trained RF/XGBoost ensemble to 98%+ F1; tracked ROC-AUC, precision/recall; threshold tuning per attack type.",
+        "Packaged model as reproducible scikit-learn Pipeline with versioned artifacts.",
+        "Deployed in shadow mode to compare against baseline traffic before enforcing blocks.",
+        "Real-time Flask REST API for predictions."
       ],
       technologies: ["Python", "Scikit-learn", "XGBoost", "CIC-IDS2017", "Flask", "SMOTE", "PCA", "t-SNE", "Seaborn"],
       architecture: [
@@ -167,7 +164,7 @@ const Projects = () => {
         { value: "Real-time", label: "Detection" }
       ],
       demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/NithinGoud2605/Shorts-Automation",
       imageUrl: "/assets/projects/ddos-detection.jpg",
       icon: (
         <svg className="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -210,7 +207,7 @@ const Projects = () => {
         { value: "0", label: "Manual Edits" }
       ],
       demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/NithinGoud2605/AI-Resume-Evaluator",
       imageUrl: "/assets/projects/youtube-automation.jpg",
       icon: (
         <svg className="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -230,14 +227,12 @@ const Projects = () => {
       title: "AI-Powered Résumé Evaluator",
       subtitle: "CrewAI · LangChain · OpenAI · MySQL · AWS Fargate",
       category: "AI/ML Platform",
-      description: "Multi-agent LLM pipeline processing 100+ résumés per run with 0-100 fit scoring. Reduced recruiter screening from 3 hours to 15 minutes while matching human shortlists with 92% accuracy.",
+      description: "Auto-scaling résumé evaluator with multi-agent LLM scoring and a searchable dashboard.",
       features: [
-        "Multi-Agent LLM Pipeline (100+ résumés/run)",
-        "0-100 Fit Score + Tags & Summaries Generation",
-        "Recruiter Screening: 3h → 15min (92% Human Match)",
-        "Auto-Scaling: 1k files/min ($0.047/100 résumés)",
-        "Flask + React Dashboard for Results",
-        "AWS Fargate Serverless Deployment"
+        "Scaled to 1K resumes/min using auto-scaling Flask APIs with queue-based load balancing.",
+        "Multi-agent LLM pipeline scoring candidates 0-100 with tags/summaries; 92% match to human shortlists.",
+        "Persisted results in MySQL with idempotent job IDs.",
+        "Flask API + React dashboard for search, filters, and exports."
       ],
       technologies: ["CrewAI", "LangChain", "OpenAI", "MySQL", "AWS Fargate", "Flask", "React", "Multi-Agent Systems"],
       architecture: [
@@ -357,54 +352,13 @@ const Projects = () => {
               transition={pageTransition}
               className="bg-black-200/50 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden shadow-2xl"
             >
-              {/* Project Image Section - Compact Landscape */}
-              <div className="relative w-full">
-                <div 
-                  className="w-full bg-gradient-to-br from-black-300 to-black-400 relative overflow-hidden"
-                  style={{ aspectRatio: '21/9', maxHeight: '250px' }}
-                >
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12"></div>
-                  </div>
-                  
-                  {/* Project Image Container */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {/* Placeholder for actual project image */}
-                    <div className="w-full h-full flex items-center justify-center relative">
-                      {/* Project Icon as fallback */}
-                      <div className={`${current.color} relative z-10`}>
-                        <div className="absolute inset-0 bg-current opacity-10 rounded-full blur-2xl scale-125"></div>
-                        <div className="relative transform hover:scale-110 transition-transform duration-500">
-                          <div className="w-16 h-16 md:w-20 md:h-20">
-                            {current.icon}
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Image placeholder overlay */}
-                      <div className="absolute inset-0 flex items-center justify-center bg-black-400/20">
-                        <div className="bg-black-400/90 backdrop-blur-sm rounded-lg p-3 border border-white/10">
-                          <div className="flex items-center space-x-2 text-gray-300">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
-                            </svg>
-                            <span className="text-xs font-medium">Project Screenshot</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Project Number Badge */}
-                  <div className="absolute top-4 right-4 bg-black-300/90 text-white px-3 py-1 rounded-lg text-xs font-semibold border border-white/20 z-20">
-                    #{current.id}
-                  </div>
-                  
-                  {/* Project Category Badge */}
-                  <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-500/90 to-purple-500/90 text-white px-3 py-1 rounded-lg text-xs font-semibold border border-white/20 z-20">
-                    {current.category}
-                  </div>
+              {/* Project Header Badges (compact, without image) */}
+              <div className="w-full flex items-center justify-between px-4 pt-4">
+                <div className="bg-gradient-to-r from-blue-500/90 to-purple-500/90 text-white px-3 py-1 rounded-lg text-xs font-semibold border border-white/20">
+                  {current.category}
+                </div>
+                <div className="bg-black-300/90 text-white px-3 py-1 rounded-lg text-xs font-semibold border border-white/20">
+                  #{current.id}
                 </div>
               </div>
 
@@ -421,15 +375,8 @@ const Projects = () => {
                         {current.subtitle}
                       </p>
                     </div>
-                    {/* Action Buttons - Top Right */}
+                    {/* Action Buttons - Top Right (Code only) */}
                     <div className="flex gap-2 ml-4">
-                      <a 
-                        href={current.demoLink} 
-                        className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-3 py-1.5 rounded-lg transition-all duration-300 font-semibold transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 flex items-center space-x-1 text-xs"
-                      >
-                        <span>🚀</span>
-                        <span>Demo</span>
-                      </a>
                       <a 
                         href={current.githubLink} 
                         className="bg-black-300 hover:bg-black-200 text-white px-3 py-1.5 rounded-lg transition-all duration-300 border border-white/20 hover:border-white/40 font-semibold transform hover:scale-105 flex items-center space-x-1 text-xs"

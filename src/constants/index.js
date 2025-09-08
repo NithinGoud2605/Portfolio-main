@@ -42,8 +42,8 @@ export const workExperiences = [
   },
   {
     id: 2,
-    name: 'Skyinfolab Software Solutions (Intern)',
-    pos: 'Web Development Intern',
+    name: 'Skyinfolab Software Solutions',
+    pos: 'Software Engineer',
     duration: 'Jan 2024 – June 2024',
     title: "Contributed to the design, development, and implementation of websites, specializing in Python for backend development. Gained comprehensive experience in both front-end and back-end web technologies, collaborating effectively with team members to achieve project objectives. Developed strong skills in web design, problem-solving, and programming.",
     icon: '/assets/Skyinfo.png',
