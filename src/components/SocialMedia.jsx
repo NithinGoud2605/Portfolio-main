@@ -1,4 +1,5 @@
 import { socialLinks } from '../constants/index.js';
+import LazyImage from './LazyImage.jsx';
 
 const SocialMedia = ({ className = '' }) => {
   return (
@@ -21,10 +22,11 @@ const SocialMedia = ({ className = '' }) => {
             className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-200 group-hover:scale-110"
             style={{ pointerEvents: 'auto' }}
           >
-            <img 
+            <LazyImage 
               src={social.icon} 
               alt={social.name} 
               className="w-6 h-6"
+              loading="eager"
               style={{ pointerEvents: 'none' }}
             />
           </div>

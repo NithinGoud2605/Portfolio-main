@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { gsap } from '../utils/gsapSetup.js';
 
 const Projects = () => {
   const { ref: projectsRef, inView: projectsInView } = useInView({
@@ -8,6 +9,21 @@ const Projects = () => {
   });
   
   const [currentProject, setCurrentProject] = useState(0);
+  const rootRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (!rootRef.current) return undefined;
+    const ctx = gsap.context(() => {
+      gsap.from(rootRef.current.querySelectorAll('[data-projects-header]'), {
+        y: 24,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+        stagger: 0.1,
+      });
+    }, rootRef);
+    return () => ctx.revert();
+  }, []);
 
   const projects = [
     {
@@ -317,11 +333,11 @@ const Projects = () => {
   const current = projects[currentProject];
 
   return (
-    <section className="w-full py-12" id="projects" ref={projectsRef}>
+    <section className="w-full py-12" id="projects" ref={(node) => { projectsRef(node); rootRef.current = node; }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-8">
-          <motion.h2 
+          <motion.h2 data-projects-header
             initial={{ opacity: 0, y: 20 }}
             animate={projectsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -329,7 +345,7 @@ const Projects = () => {
           >
             Featured <span className="text-gradient">Projects</span>
           </motion.h2>
-          <motion.p 
+          <motion.p data-projects-header
             initial={{ opacity: 0, y: 20 }}
             animate={projectsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}

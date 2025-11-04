@@ -1,5 +1,6 @@
 import {  useState } from 'react';
 import { workExperiences } from '../constants/index.js';
+import LazyImage from '../components/LazyImage.jsx';
 
 const WorkExperience = () => {
   const [animationName, setAnimationName] = useState('idle');
@@ -17,7 +18,7 @@ const WorkExperience = () => {
                 <div key={index} className="work-content_container group">
                   <div className="flex flex-col h-full justify-start items-center py-2">
                     <div className="work-content_logo">
-                      <img className="w-full h-full" src={item.icon} alt="" />
+                      <LazyImage className="w-full h-full" src={item.icon} alt={item.name} />
                     </div>
 
                     <div className="work-content_bar" />

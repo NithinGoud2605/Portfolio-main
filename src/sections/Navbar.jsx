@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { navLinks } from '../constants/index.js';
 import PDFViewer from '../components/PDFViewer.jsx';
+import LazyImage from '../components/LazyImage.jsx';
 
 // Smooth scrolling function
 const scrollToSection = (sectionId) => {
@@ -49,14 +50,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center py-5 mx-auto c-space">
           <a href="/">
-            <img src="/assets/logo.png" alt="logo image" className="w-24 h-auto" />
+            <LazyImage src="/assets/logo.png" alt="logo image" className="w-24 h-auto" loading="eager" />
           </a>
 
           <button
             onClick={toggleMenu}
             className="text-neutral-400 hover:text-white focus:outline-none sm:hidden flex"
             aria-label="Toggle menu">
-            <img src={isOpen ? 'assets/close.svg' : 'assets/menu.svg'} alt="toggle" className="w-6 h-6" />
+            <LazyImage src={isOpen ? 'assets/close.svg' : 'assets/menu.svg'} alt="toggle" className="w-6 h-6" loading="eager" />
           </button>
 
           <nav className="sm:flex hidden">

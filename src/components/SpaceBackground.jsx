@@ -223,6 +223,17 @@ function TwinklingStars({ count = 50 }) {
 }
 
 const SpaceBackground = () => {
+  // Adaptive performance based on device capabilities
+  const isLowEnd = typeof window !== 'undefined' && (
+    navigator.hardwareConcurrency <= 4 || 
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+  );
+  
+  const starCount = isLowEnd ? 1500 : 3000;
+  const distantCount = isLowEnd ? 750 : 1500;
+  const blueGiantsCount = isLowEnd ? 150 : 300;
+  const dustCount = isLowEnd ? 1000 : 2000;
+
   return (
     <div className="fixed inset-0 -z-10">
       <Canvas
@@ -232,19 +243,23 @@ const SpaceBackground = () => {
           alpha: true,
           powerPreference: "high-performance",
           stencil: false,
-          depth: false
+          depth: false,
+          preserveDrawingBuffer: false,
         }}
         dpr={[1, Math.min(window.devicePixelRatio, 2)]}
-        performance={{ min: 0.5 }}
+        performance={{ min: 0.5, max: 1 }}
         frameloop="always"
+        onCreated={({ gl }) => {
+          gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        }}
       >
         {/* Main star layers */}
-        <Stars count={3000} />
-        <DistantStars count={1500} />
-        <BlueGiants count={300} />
+        <Stars count={starCount} />
+        <DistantStars count={distantCount} />
+        <BlueGiants count={blueGiantsCount} />
         
         {/* Atmospheric effects */}
-        <CosmicDust count={2000} />
+        <CosmicDust count={dustCount} />
         <TwinklingStars count={50} />
         
         {/* Nebula layers */}

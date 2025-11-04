@@ -1,8 +1,10 @@
 import emailjs from '@emailjs/browser';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import useAlert from '../hooks/useAlert.js';
 import Alert from '../components/Alert.jsx';
 import { EMAILJS_CONFIG } from '../config/emailjs.js';
+import { gsap } from '../utils/gsapSetup.js';
+import LazyImage from '../components/LazyImage.jsx';
 
 const Contact = () => {
   const formRef = useRef();
@@ -85,12 +87,35 @@ const Contact = () => {
     window.open(`mailto:sainithingoudk@gmail.com?subject=${subject}&body=${body}`);
   };
 
+  const rootRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (!rootRef.current) return undefined;
+    const ctx = gsap.context(() => {
+      gsap.from(rootRef.current.querySelector('[data-contact-title]'), {
+        y: 24,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+      });
+      gsap.from(rootRef.current.querySelectorAll('[data-contact-stagger]'), {
+        y: 16,
+        opacity: 0,
+        duration: 0.5,
+        ease: 'power3.out',
+        stagger: 0.08,
+        delay: 0.1,
+      });
+    }, rootRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="w-full flex flex-col justify-center" id="contact">
+    <section ref={rootRef} className="w-full flex flex-col justify-center" id="contact">
       {alert.show && <Alert {...alert} />}
 
       <div className="c-space relative flex items-center justify-center flex-col">
-        <img
+        <LazyImage
           src="/assets/terminal.png"
           alt="terminal background"
           className="absolute inset-0 min-h-screen"
@@ -99,13 +124,13 @@ const Contact = () => {
         {/* Moved contact-container down */}
         <div style={{ height: "100px" }}></div>
         <div className="contact-container">
-          <h3 className="head-text">Let's talk</h3>
-          <p className="text-lg text-white-600 mt-3">
+          <h3 data-contact-title className="head-text">Let's talk</h3>
+          <p data-contact-stagger className="text-lg text-white-600 mt-3">
           Feel free to reach out—I'm always excited to learn, grow, and contribute!
           </p>
 
           <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
-            <label className="space-y-3">
+            <label className="space-y-3" data-contact-stagger>
               <span className="field-label">Full Name</span>
               <input
                 type="text"
@@ -119,7 +144,7 @@ const Contact = () => {
               />
             </label>
 
-            <label className="space-y-3">
+            <label className="space-y-3" data-contact-stagger>
               <span className="field-label">Email address</span>
               <input
                 type="email"
@@ -133,7 +158,7 @@ const Contact = () => {
               />
             </label>
 
-            <label className="space-y-3">
+            <label className="space-y-3" data-contact-stagger>
               <span className="field-label">Your message</span>
               <textarea
                 name="message"
@@ -147,7 +172,7 @@ const Contact = () => {
               />
             </label>
 
-            <div className="flex flex-col space-y-3">
+            <div className="flex flex-col space-y-3" data-contact-stagger>
               <button className="field-btn" type="submit" disabled={loading}>
                 {loading ? 'Sending...' : 'Send Message'}
                 <svg className="w-2.5 h-2.5 object-contain invert brightness-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
