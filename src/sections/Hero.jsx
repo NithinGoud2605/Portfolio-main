@@ -169,7 +169,7 @@ const Hero = () => {
         </p>
         
         {/* Social Media Links */}
-        <div data-hero-line className="flex justify-center mt-6">
+        <div data-hero-line className="flex justify-center mt-6 relative z-20">
           <SocialMedia />
         </div>
       </div>
@@ -186,7 +186,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="w-full h-full absolute inset-0"></div>
+      <div className="w-full h-full absolute inset-0 pointer-events-none"></div>
 
       {/* Button only visible on screens smaller than laptop resolution */}
       <div className="absolute bottom-20 left-0 right-0 w-full z-10 c-space flex justify-center"> 
