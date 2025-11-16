@@ -8,6 +8,105 @@ const Hero = () => {
   const rootRef = useRef(null);
   const imageRef = useRef(null);
   const roleRef = useRef(null);
+  const displayedTitle = 'Software Engineer';
+
+  // Animate role title with character-by-character animation
+  const animateTitle = (titleElement) => {
+    if (!titleElement) return null;
+    
+    const chars = titleElement.querySelectorAll('[data-role-char="true"]');
+    if (!chars.length) return null;
+
+    // Kill any existing animations first
+    gsap.killTweensOf(chars);
+    
+    // Reset and set initial state
+    gsap.set(titleElement, { perspective: 600 });
+    gsap.set(chars, { 
+      display: 'inline-block', 
+      transformOrigin: '50% 50%'
+    });
+
+    const offsets = ['left', 'right', 'top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'];
+    const fromX = (i) => {
+      const dir = offsets[i % offsets.length];
+      if (dir === 'left' || dir === 'topLeft' || dir === 'bottomLeft') return gsap.utils.random(-120, -60);
+      if (dir === 'right' || dir === 'topRight' || dir === 'bottomRight') return gsap.utils.random(60, 120);
+      return gsap.utils.random(-20, 20);
+    };
+    const fromY = (i) => {
+      const dir = offsets[i % offsets.length];
+      if (dir === 'top' || dir === 'topLeft' || dir === 'topRight') return gsap.utils.random(-80, -40);
+      if (dir === 'bottom' || dir === 'bottomLeft' || dir === 'bottomRight') return gsap.utils.random(40, 100);
+      return gsap.utils.random(-15, 15);
+    };
+
+    const tl = gsap.timeline();
+
+    // Stage 1: Entry with depth, blur, and rotation
+    tl.fromTo(
+      chars,
+      {
+        x: (i) => fromX(i),
+        y: (i) => fromY(i),
+        z: () => gsap.utils.random(-60, 60),
+        opacity: 0,
+        rotateX: () => gsap.utils.random(-35, 35),
+        rotateY: () => gsap.utils.random(-25, 25),
+        rotateZ: () => gsap.utils.random(-25, 25),
+        scale: () => gsap.utils.random(0.85, 1.05),
+        skewX: () => gsap.utils.random(-8, 8),
+        skewY: () => gsap.utils.random(-6, 6),
+        filter: 'blur(6px)'
+      },
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+        opacity: 1,
+        rotateX: 0,
+        rotateY: 0,
+        rotateZ: 0,
+        skewX: 0,
+        skewY: 0,
+        scale: 1,
+        filter: 'blur(0px)',
+        duration: 2.0,
+        ease: 'power4.out',
+        stagger: { each: 0.09, from: 0 },
+      }
+    );
+
+    // Stage 2: Gentle wave ripple across letters
+    tl.to(
+      chars,
+      {
+        y: (i) => (i % 2 === 0 ? -8 : -5),
+        rotateZ: (i) => (i % 3 - 1) * 2,
+        duration: 0.7,
+        ease: 'sine.inOut',
+        yoyo: true,
+        repeat: 1,
+        stagger: { each: 0.035, from: 'start' },
+      },
+      '-=1.2'
+    );
+
+    // Stage 3: Subtle elastic settle
+    tl.to(
+      chars,
+      {
+        y: 0,
+        rotateZ: 0,
+        duration: 0.9,
+        ease: 'elastic.out(1, 0.7)',
+        stagger: { each: 0.02, from: 'center' },
+      },
+      '-=0.4'
+    );
+
+    return tl;
+  };
 
   useLayoutEffect(() => {
     if (!rootRef.current) return undefined;
@@ -43,103 +142,28 @@ const Hero = () => {
         });
       }
 
-      // Per-character role animation: letters fly in from different sides and settle with layered effects.
+      // Initial animation - wait a bit for DOM to be ready
       if (roleRef.current) {
-        const chars = roleRef.current.querySelectorAll('[data-role-char="true"]');
-        if (chars.length) {
-          gsap.set(roleRef.current, { perspective: 600 });
-          gsap.set(chars, { display: 'inline-block', transformOrigin: '50% 50%' });
-
-          const offsets = ['left', 'right', 'top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'];
-          const fromX = (i) => {
-            const dir = offsets[i % offsets.length];
-            if (dir === 'left' || dir === 'topLeft' || dir === 'bottomLeft') return gsap.utils.random(-120, -60);
-            if (dir === 'right' || dir === 'topRight' || dir === 'bottomRight') return gsap.utils.random(60, 120);
-            return gsap.utils.random(-20, 20);
-          };
-          const fromY = (i) => {
-            const dir = offsets[i % offsets.length];
-            if (dir === 'top' || dir === 'topLeft' || dir === 'topRight') return gsap.utils.random(-80, -40);
-            if (dir === 'bottom' || dir === 'bottomLeft' || dir === 'bottomRight') return gsap.utils.random(40, 100);
-            return gsap.utils.random(-15, 15);
-          };
-
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: roleRef.current,
-              start: 'top 85%',
-              end: 'bottom top',
-              toggleActions: 'play none none none',
-            },
-          });
-
-          // Stage 1: Entry with depth, blur, and rotation
-          tl.fromTo(
-            chars,
-            {
-              x: (i) => fromX(i),
-              y: (i) => fromY(i),
-              z: () => gsap.utils.random(-60, 60),
-              opacity: 0,
-              rotateX: () => gsap.utils.random(-35, 35),
-              rotateY: () => gsap.utils.random(-25, 25),
-              rotateZ: () => gsap.utils.random(-25, 25),
-              scale: () => gsap.utils.random(0.85, 1.05),
-              skewX: () => gsap.utils.random(-8, 8),
-              skewY: () => gsap.utils.random(-6, 6),
-              filter: 'blur(6px)'
-            },
-            {
-              x: 0,
-              y: 0,
-              z: 0,
-              opacity: 1,
-              rotateX: 0,
-              rotateY: 0,
-              rotateZ: 0,
-              skewX: 0,
-              skewY: 0,
-              scale: 1,
-              filter: 'blur(0px)',
-              duration: 2.0,
-              ease: 'power4.out',
-              stagger: { each: 0.09, from: 0 },
-            }
-          );
-
-          // Stage 2: Gentle wave ripple across letters
-          tl.to(
-            chars,
-            {
-              y: (i) => (i % 2 === 0 ? -8 : -5),
-              rotateZ: (i) => (i % 3 - 1) * 2,
-              duration: 0.7,
-              ease: 'sine.inOut',
-              yoyo: true,
-              repeat: 1,
-              stagger: { each: 0.035, from: 'start' },
-            },
-            '-=1.2'
-          );
-
-          // Stage 3: Subtle elastic settle
-          tl.to(
-            chars,
-            {
-              y: 0,
-              rotateZ: 0,
-              duration: 0.9,
-              ease: 'elastic.out(1, 0.7)',
-              stagger: { each: 0.02, from: 'center' },
-            },
-            '-=0.4'
-          );
-        }
+        setTimeout(() => {
+          const chars = roleRef.current.querySelectorAll('[data-role-char="true"]');
+          if (chars.length) {
+            // Set initial state for animation (opacity 0, positioned off-screen)
+            gsap.set(chars, {
+              display: 'inline-block',
+              transformOrigin: '50% 50%',
+              opacity: 0
+            });
+            
+            // Then animate in
+            animateTitle(roleRef.current);
+          }
+        }, 100);
       }
     }, rootRef);
 
     return () => ctx.revert();
   }, []);
+
 
   return (
     <section ref={rootRef} className="min-h-screen w-full flex flex-col relative pt-20" id="home">
@@ -150,8 +174,21 @@ const Hero = () => {
         <p data-hero-line className="sm:text-3xl text-xl font-medium text-white text-center font-generalsans">
           SAI NITHIN GOUD K
         </p>
-        <p data-hero-line ref={roleRef} className="hero_tag text-gray_gradient text-2xl relative" style={{ willChange: 'transform' }}>
-          { 'SOFTWARE DEVELOPER'.split('').map((ch, i) => (
+        <p 
+          data-hero-line 
+          ref={roleRef} 
+          className="hero_tag text-gray_gradient text-2xl relative" 
+          style={{ 
+            willChange: 'transform',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            textAlign: 'center',
+            lineHeight: '1.1',
+          }}
+        >
+          {displayedTitle.split('').map((ch, i) => (
             <span
               key={i}
               data-role-char="true"
@@ -161,11 +198,12 @@ const Hero = () => {
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
                 color: 'transparent',
+                display: 'inline-block',
               }}
             >
               {ch === ' ' ? '\u00A0' : ch}
             </span>
-          )) }
+          ))}
         </p>
         
         {/* Social Media Links */}

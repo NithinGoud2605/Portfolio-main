@@ -149,16 +149,16 @@ const LogoField = () => {
                 src={`/assets/Logos/${logo.file}`}
                 alt={logo.display || logo.name}
                 className="w-10 h-10 object-contain"
-                onError={(e) => {
-                  // Fallback for missing logos
-                  e.target.style.display = 'none';
-                  e.target.parentElement.innerHTML = `
-                    <div class="w-10 h-10 bg-blue-500/20 border border-blue-400/30 rounded-lg flex items-center justify-center text-xs font-bold text-blue-300">
-                      ${logo.display?.charAt(0) || logo.name.charAt(0).toUpperCase()}
-                    </div>
-                  `;
-                }}
-              />
+              onError={(e) => {
+                // Fallback for missing logos
+                e.target.style.display = 'none';
+                e.target.parentElement.innerHTML = `
+                  <div class="w-10 h-10 bg-blue-500/20 border border-blue-400/30 rounded-lg flex items-center justify-center text-xs font-bold text-blue-300">
+                    ${logo.display?.charAt(0) || logo.name.charAt(0).toUpperCase()}
+                  </div>
+                `;
+              }}
+            />
             </motion.div>
             
             {/* Subtle glow effect */}

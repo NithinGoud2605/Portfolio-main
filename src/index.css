@@ -114,7 +114,7 @@ body {
   }
 
   .hero_tag {
-    @apply text-center xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-cyberpunk-is-not-dead font-black !leading-normal;
+    @apply text-center xl:text-6xl md:text-5xl sm:text-4xl text-2xl font-cyberpunk-is-not-dead font-black !leading-normal;
   }
 
   .grid-container {
