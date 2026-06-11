@@ -15,9 +15,9 @@ const About = () => {
             <div>
               <p className="grid-headtext">I'm Sai Nithin Goud K</p>
               <p className="grid-subtext">
-              Software Engineer specializing in AI-driven applications, full-stack development, and scalable cloud systems. Currently building AI-powered collaborative learning platforms at Nuubi, where I develop LLM-integrated microservices, real-time WebSocket APIs, and cross-platform mobile applications. Proficient in Python, C++, Java, and JavaScript with hands-on experience in LangChain, OpenAI API, React, Node.js, and AWS infrastructure.
+              Software Engineer with experience owning and building scalable backend and full-stack systems, including REST APIs, event-driven services, and cloud-deployed applications. Currently serving as Founding Engineer at Anthum, where I lead end-to-end development of an AI-enabled marketplace—owning architecture across frontend, backend, and infrastructure, with real-time WebSockets, Redis caching, and AI-assisted product workflows.
               </p>
-              <p className="grid-subtext">With a strong foundation in algorithms, data structures, and distributed systems, I'm passionate about developing intelligent, user-centric software optimized for performance and reliability. Currently pursuing Master of Engineering in Computer Science at the University of Cincinnati, continuously expanding expertise in modern software development practices, cloud computing, and AI/ML technologies. </p>
+              <p className="grid-subtext">With a strong foundation in data structures, algorithms, and system design, I focus on delivering production-ready code, debugging live issues, and improving reliability across backend, databases, and cloud infrastructure. Proficient in Python, C++, Java, JavaScript, and SQL with hands-on experience in React, Next.js, Node.js, Django, Kafka, and AWS. Currently pursuing a Master's in Computer Science at the University of Cincinnati, with coursework in distributed systems, cloud computing, database systems, and machine learning.</p>
 
             </div>
           </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { programmingLanguages, frameworks, dataStreaming, cloudDevOpsTools } from '../constants/logos.js';
+import { programmingLanguages, frameworks, aiMlFrameworks, dataStreaming, cloudDevOpsTools } from '../constants/logos.js';
 import { gsap, ScrollTrigger } from '../utils/gsapSetup.js';
 import LazyImage from '../components/LazyImage.jsx';
 
@@ -277,13 +277,16 @@ const Skills = () => {
           {renderSkillCategory(programmingLanguages, "Programming Languages", "rgba(59, 130, 246, 0.5)", 0.2, 0)}
 
           {/* Frameworks & Libraries */}
-          {renderSkillCategory(frameworks, "Frameworks & Libraries", "rgba(168, 85, 247, 0.5)", 0.4, 5)}
+          {renderSkillCategory(frameworks, "Frameworks & Libraries", "rgba(168, 85, 247, 0.5)", 0.4, 6)}
 
-          {/* Databases & Cloud */}
-          {renderSkillCategory(dataStreaming, "Data & Streaming", "rgba(34, 197, 94, 0.5)", 0.6, 12)}
+          {/* AI/ML Frameworks */}
+          {renderSkillCategory(aiMlFrameworks, "AI/ML Frameworks", "rgba(249, 115, 22, 0.5)", 0.5, 15)}
+
+          {/* Databases & Data */}
+          {renderSkillCategory(dataStreaming, "Databases & Data Systems", "rgba(34, 197, 94, 0.5)", 0.6, 21)}
 
           {/* DevOps & Tools */}
-          {renderSkillCategory(cloudDevOpsTools, "Cloud / DevOps / Tools", "rgba(236, 72, 153, 0.5)", 0.8, 19)}
+          {renderSkillCategory(cloudDevOpsTools, "Cloud / DevOps / Tools", "rgba(236, 72, 153, 0.5)", 0.8, 28)}
 
 
         </div>
@@ -299,11 +302,19 @@ const Skills = () => {
           <div className="grid md:grid-cols-2 grid-cols-1 gap-4 max-w-4xl mx-auto">
             <div className="bg-space-400/30 backdrop-blur-sm rounded-lg p-4 border border-space-500/30">
               <h4 className="text-blue-300 font-semibold mb-2">Systems & Backend</h4>
-              <p className="text-white/70 text-sm">Distributed Systems • REST APIs • Multithreading • Performance Tuning</p>
+              <p className="text-white/70 text-sm">Algorithms & Data Structures • System Design • Microservices • REST & GraphQL APIs • Performance Tuning</p>
             </div>
             <div className="bg-space-400/30 backdrop-blur-sm rounded-lg p-4 border border-space-500/30">
               <h4 className="text-green-300 font-semibold mb-2">Cloud Infrastructure</h4>
-              <p className="text-white/70 text-sm">AWS EC2, Lambda, S3 • CI/CD Pipelines • Container Orchestration</p>
+              <p className="text-white/70 text-sm">AWS EC2, Lambda, S3 • CI/CD Pipelines • Docker • Kubernetes • Terraform • Kafka</p>
+            </div>
+            <div className="bg-space-400/30 backdrop-blur-sm rounded-lg p-4 border border-space-500/30">
+              <h4 className="text-orange-300 font-semibold mb-2">AI/ML</h4>
+              <p className="text-white/70 text-sm">Scikit-learn • XGBoost • PyTorch • TensorFlow • RAG • LLM Integrations • LangChain</p>
+            </div>
+            <div className="bg-space-400/30 backdrop-blur-sm rounded-lg p-4 border border-space-500/30">
+              <h4 className="text-purple-300 font-semibold mb-2">Data & Practices</h4>
+              <p className="text-white/70 text-sm">PostgreSQL • MySQL • MongoDB • Redis • Event-Driven Architecture • Git/GitHub/GitLab</p>
             </div>
           </div>
         </motion.div>
