@@ -216,7 +216,7 @@ const Hero = () => {
         <div className="card flex flex-col justify-end h-full">
           <LazyImage 
             ref={imageRef} 
-            src="/assets/final-ai-brush-removebg-4yhtxlg.png" 
+            src="/assets/hero-portrait.png"
             alt="Hero image" 
             className="object-bottom" 
             loading="eager"
