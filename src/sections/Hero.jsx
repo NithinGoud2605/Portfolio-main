@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'react';
 import Button from '../components/Button.jsx';
 import SocialMedia from '../components/SocialMedia.jsx';
-import LazyImage from '../components/LazyImage.jsx';
+import HeroCharacter from '../components/HeroCharacter.jsx';
 import { gsap, ScrollTrigger } from '../utils/gsapSetup.js';
 
 const Hero = () => {
@@ -214,13 +214,7 @@ const Hero = () => {
 
       <div className="col-span-1 my-4 xl:row-span-3 h-full relative">  {/* Added relative here */}
         <div className="card flex flex-col justify-end h-full">
-          <LazyImage 
-            ref={imageRef} 
-            src="/assets/hero-portrait.png"
-            alt="Hero image" 
-            className="object-bottom" 
-            loading="eager"
-          />
+          <HeroCharacter ref={imageRef} />
         </div>
       </div>
 

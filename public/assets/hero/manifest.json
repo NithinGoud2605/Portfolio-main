@@ -1,0 +1,377 @@
+{
+ "size": {
+  "w": 2492,
+  "h": 1480
+ },
+ "patch": {
+  "x": 885,
+  "y": 1,
+  "w": 820,
+  "h": 932
+ },
+ "face": {
+  "x": 1295.0,
+  "y": 420.40000000000003
+ },
+ "mode": "rays",
+ "steps": 10,
+ "dirs": [
+  "right",
+  "down-right",
+  "down",
+  "down-left",
+  "left",
+  "up-left",
+  "up",
+  "up-right"
+ ],
+ "rays": {
+  "right": [
+   "right_01.webp",
+   "right_02.webp",
+   "right_03.webp",
+   "right_04.webp",
+   "right_05.webp",
+   "right_06.webp",
+   "right_07.webp",
+   "right_08.webp",
+   "right_09.webp",
+   "right_10.webp"
+  ],
+  "down-right": [
+   "down-right_01.webp",
+   "down-right_02.webp",
+   "down-right_03.webp",
+   "down-right_04.webp",
+   "down-right_05.webp",
+   "down-right_06.webp",
+   "down-right_07.webp",
+   "down-right_08.webp",
+   "down-right_09.webp",
+   "down-right_10.webp"
+  ],
+  "down": [
+   "down_01.webp",
+   "down_02.webp",
+   "down_03.webp",
+   "down_04.webp",
+   "down_05.webp",
+   "down_06.webp",
+   "down_07.webp",
+   "down_08.webp",
+   "down_09.webp",
+   "down_10.webp"
+  ],
+  "down-left": [
+   "down-left_01.webp",
+   "down-left_02.webp",
+   "down-left_03.webp",
+   "down-left_04.webp",
+   "down-left_05.webp",
+   "down-left_06.webp",
+   "down-left_07.webp",
+   "down-left_08.webp",
+   "down-left_09.webp",
+   "down-left_10.webp"
+  ],
+  "left": [
+   "left_01.webp",
+   "left_02.webp",
+   "left_03.webp",
+   "left_04.webp",
+   "left_05.webp",
+   "left_06.webp",
+   "left_07.webp",
+   "left_08.webp",
+   "left_09.webp",
+   "left_10.webp"
+  ],
+  "up-left": [
+   "up-left_01.webp",
+   "up-left_02.webp",
+   "up-left_03.webp",
+   "up-left_04.webp",
+   "up-left_05.webp",
+   "up-left_06.webp",
+   "up-left_07.webp",
+   "up-left_08.webp",
+   "up-left_09.webp",
+   "up-left_10.webp"
+  ],
+  "up": [
+   "up_01.webp",
+   "up_02.webp",
+   "up_03.webp",
+   "up_04.webp",
+   "up_05.webp",
+   "up_06.webp",
+   "up_07.webp",
+   "up_08.webp",
+   "up_09.webp",
+   "up_10.webp"
+  ],
+  "up-right": [
+   "up-right_01.webp",
+   "up-right_02.webp",
+   "up-right_03.webp",
+   "up-right_04.webp",
+   "up-right_05.webp",
+   "up-right_06.webp",
+   "up-right_07.webp",
+   "up-right_08.webp",
+   "up-right_09.webp",
+   "up-right_10.webp"
+  ]
+ },
+ "center": "center.webp",
+ "qa": {
+  "right": {
+   "frames": 121,
+   "rejected_frames": 3,
+   "max_detour_used": 1.66,
+   "hold_mag": 49.7,
+   "end_angle_deg": 357.4,
+   "picks": [
+    33,
+    37,
+    41,
+    46,
+    53,
+    61,
+    67,
+    72,
+    76,
+    83
+   ],
+   "pick_prog": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.69,
+    0.81,
+    0.89,
+    0.97
+   ]
+  },
+  "down-right": {
+   "frames": 121,
+   "rejected_frames": 0,
+   "max_detour_used": 1.68,
+   "hold_mag": 41.8,
+   "end_angle_deg": 5.4,
+   "picks": [
+    6,
+    10,
+    15,
+    20,
+    29,
+    40,
+    47,
+    51,
+    55,
+    98
+   ],
+   "pick_prog": [
+    0.09,
+    0.19,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.79,
+    0.9,
+    0.97
+   ]
+  },
+  "down": {
+   "frames": 121,
+   "rejected_frames": 47,
+   "max_detour_used": 2.24,
+   "hold_mag": 6.6,
+   "end_angle_deg": 86.7,
+   "picks": [
+    5,
+    14,
+    16,
+    18,
+    21,
+    26,
+    88,
+    102,
+    108,
+    111
+   ],
+   "pick_prog": [
+    0.11,
+    0.19,
+    0.28,
+    0.39,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.89,
+    0.99
+   ]
+  },
+  "down-left": {
+   "frames": 121,
+   "rejected_frames": 0,
+   "max_detour_used": 1.62,
+   "hold_mag": 49.3,
+   "end_angle_deg": 180.6,
+   "picks": [
+    20,
+    28,
+    35,
+    45,
+    61,
+    76,
+    85,
+    93,
+    101,
+    107
+   ],
+   "pick_prog": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.61,
+    0.7,
+    0.8,
+    0.89,
+    0.97
+   ]
+  },
+  "left": {
+   "frames": 121,
+   "rejected_frames": 0,
+   "max_detour_used": 1.69,
+   "hold_mag": 53.2,
+   "end_angle_deg": 182.3,
+   "picks": [
+    23,
+    32,
+    40,
+    49,
+    62,
+    78,
+    90,
+    99,
+    106,
+    110
+   ],
+   "pick_prog": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    0.98
+   ]
+  },
+  "up-left": {
+   "frames": 121,
+   "rejected_frames": 0,
+   "max_detour_used": 1.53,
+   "hold_mag": 57.9,
+   "end_angle_deg": 196.6,
+   "picks": [
+    18,
+    26,
+    34,
+    43,
+    55,
+    68,
+    78,
+    87,
+    95,
+    102
+   ],
+   "pick_prog": [
+    0.1,
+    0.19,
+    0.31,
+    0.4,
+    0.5,
+    0.61,
+    0.7,
+    0.8,
+    0.9,
+    0.97
+   ]
+  },
+  "up": {
+   "frames": 121,
+   "rejected_frames": 0,
+   "max_detour_used": 1.56,
+   "hold_mag": 34.0,
+   "end_angle_deg": 233.1,
+   "picks": [
+    21,
+    26,
+    32,
+    39,
+    48,
+    56,
+    64,
+    73,
+    83,
+    93
+   ],
+   "pick_prog": [
+    0.1,
+    0.19,
+    0.31,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.91,
+    0.97
+   ]
+  },
+  "up-right": {
+   "frames": 121,
+   "rejected_frames": 0,
+   "max_detour_used": 1.5,
+   "hold_mag": 48.0,
+   "end_angle_deg": 336.5,
+   "picks": [
+    13,
+    18,
+    24,
+    30,
+    39,
+    49,
+    56,
+    63,
+    71,
+    83
+   ],
+   "pick_prog": [
+    0.1,
+    0.2,
+    0.31,
+    0.39,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    0.97
+   ]
+  }
+ }
+}

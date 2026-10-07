@@ -25,3 +25,6 @@ dist-ssr
 
 # env
 .env
+# hero generation working files
+hero-tracking/
+Claude outputs/
